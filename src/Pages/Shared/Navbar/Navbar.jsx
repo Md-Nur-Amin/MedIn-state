@@ -18,18 +18,18 @@ const Navbar = () => {
 
 
     const navLinks = <>
-        <li className="lg:text-white" ><NavLink to="/">Home</NavLink></li>
-        <li className="lg:text-white" ><NavLink to="/about">About</NavLink></li>
+        <li className="lg:text-white font-popins" ><NavLink to="/">Home</NavLink></li>
+        <li className="lg:text-white font-popins" ><NavLink to="/about">About</NavLink></li>
 
         {/* <li className="lg:text-white" ><NavLink to="/profile">Profile</NavLink></li> */}
 
-        <li className="lg:text-white" ><NavLink to="/register">Register</NavLink></li>
+        <li className="lg:text-white font-popins" ><NavLink to="/register">Register</NavLink></li>
 
         <li>
             {
                 user &&
                 <>
-                    <NavLink className="lg:text-white" to='/update'
+                    <NavLink className="lg:text-white font-popins" to='/update'
                     >Update Profile </NavLink>
                 </>
             }
@@ -39,7 +39,7 @@ const Navbar = () => {
             {
                 user &&
                 <>
-                    <NavLink className="lg:text-white" to='/profile'
+                    <NavLink className="lg:text-white font-popins" to='/profile'
                     > Profile </NavLink>
                 </>
             }
@@ -68,7 +68,7 @@ const Navbar = () => {
                         </div>
                         <div className="flex gap-x-2 lg:gap-3">
                             <img className="h-[40px] w-[40px] lg:h-[64px] lg:w-[64px] " src={hospital} alt="" />
-                            <a className=" font-semibold lg:font-bold font-mono text-2xl lg:text-5xl mt-2 lg:mt-5 text-blue-950"> MED<span className="text-blue-400">IN</span>  </a>
+                            <a className=" font-semibold lg:font-bold text-2xl lg:text-5xl mt-2 lg:mt-5 text-blue-950 font-popins"> MED<span className="text-blue-400">IN</span>  </a>
                         </div>
 
                     </div>
