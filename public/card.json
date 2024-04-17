@@ -1,0 +1,105 @@
+[
+  {
+    "id": 1,
+    "estate_title": "Luxury Beachfront Villa",
+    "segment_name": "Luxury Homes",
+    "description": "Experience unparalleled luxury in this exquisite beachfront villa, featuring breathtaking ocean views and top-of-the-line amenities.",
+    "price": "$2,500,000",
+    "status": "sale",
+    "area": "5000 sq ft",
+    "location": "Malibu, California",
+
+    "facilities": [
+      "Infinity pool",
+      "Private beach access",
+      "Gourmet kitchen",
+      "Spa"
+    ],
+    "image_url": "https://i.ibb.co/MBJ1fnQ/bedOne.jpg"
+  },
+  {
+    "id": 2,
+    "estate_title": "Modern Urban Loft",
+    "segment_name": "City Living",
+    "description": "Live in style in this sleek and modern urban loft, located in the heart of the city with easy access to all amenities and attractions.",
+    "price": "$1,200,000",
+    "status": "sale",
+    "area": "2000 sq ft",
+    "location": "New York City, New York",
+    "facilities": [
+      "Open-concept layout",
+      "Floor-to-ceiling windows",
+      "Fitness center",
+      "Rooftop terrace"
+    ],
+    "image_url": "https://i.ibb.co/GWTmMKt/bed-four.jpg"
+  },
+  {
+    "id": 3,
+    "estate_title": "Mountain Retreat Cabin",
+    "segment_name": "Nature Escapes",
+    "description": "Escape the hustle and bustle of city life in this charming mountain retreat cabin, surrounded by serene forests and majestic peaks.",
+    "price": "$500,000",
+    "status": "sale",
+    "area": "1500 sq ft",
+    "location": "Aspen, Colorado",
+    "facilities": [
+      "Cozy fireplace",
+      "Outdoor hot tub",
+      "Hiking trails nearby",
+      "Deck with panoramic views"
+    ],
+    "image_url": "https://i.ibb.co/cXWJcNN/bed-two.jpg"
+  },
+  {
+    "id": 4,
+    "estate_title": "Luxury Condo with Panoramic Views",
+    "segment_name": "High-Rise Living",
+    "description": "Live the high life in this luxurious condo, boasting panoramic city views and unparalleled amenities in an exclusive high-rise community.",
+    "price": "$1,800,000",
+    "status": "sale",
+    "area": "3000 sq ft",
+    "location": "Los Angeles, California",
+    "facilities": [
+      "24/7 concierge service",
+      "Gym and wellness center",
+      "Valet parking",
+      "Sky lounge"
+    ],
+    "image_url": "https://i.ibb.co/yWks2sb/bed-three.jpg"
+  },
+  {
+    "id": 5,
+    "estate_title": "Seaside Cottage Retreat",
+    "segment_name": "Coastal Living",
+    "description": "Relax and unwind in this charming seaside cottage retreat, nestled along the picturesque coastline with stunning views and coastal breezes.",
+    "price": "$800,000",
+    "status": "sale",
+    "area": "1800 sq ft",
+    "location": "Santa Barbara, California",
+    "facilities": [
+      "Oceanfront deck",
+      "Private beach access",
+      "Fire pit",
+      "Outdoor shower"
+    ],
+    "image_url": "https://i.ibb.co/yhx9fXG/Nbed.jpg"
+  },
+  {
+    "id": 6,
+    "estate_title": "Rustic Mountain Lodge",
+    "segment_name": "Wilderness Retreat",
+    "description": "Embrace the rugged beauty of the mountains in this rustic lodge, offering cozy interiors, stunning views, and access to endless outdoor adventures.",
+    "price": "$700,000",
+    "status": "sale",
+    "area": "2500 sq ft",
+    "location": "Jackson Hole, Wyoming",
+    "facilities": [
+      "Stone fireplace",
+      "Hot tub",
+      "Hiking trails",
+      "Ski-in/ski-out access"
+    ],
+    "image_url": "https://i.ibb.co/f0pWbKw/Cbed.jpg"
+  }
+]
