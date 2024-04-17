@@ -1,15 +1,16 @@
-import  { useContext, useState } from 'react';
+import { useContext, useState } from 'react';
 import Footer from '../Shared/Footer/Footer';
 import Navbar from '../Shared/Navbar/Navbar';
 import { FcGoogle } from "react-icons/fc";
 import { FaGithub } from "react-icons/fa";
 import { GoogleAuthProvider, getAuth, signInWithPopup } from "firebase/auth";
+import { GithubAuthProvider } from "firebase/auth";
 import app from '../../Firebase/firebase.config';
 import { Link, Navigate, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../Providers/AuthProvider';
-// import { FaEyeSlash } from "react-icons/fa";
-// import { FaEye } from "react-icons/fa";
-import {  toast } from 'react-toastify';
+import { FaEyeSlash } from "react-icons/fa";
+import { FaEye } from "react-icons/fa";
+import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
 
@@ -21,9 +22,11 @@ const Register = () => {
     const { createUser } = useContext(AuthContext);
 
     const [user, setUser] = useState(null);
+    const [regError, setRegError] = useState('')
+    const [success, setSuccess] = useState('');
+    const [showPass, setShowPass] = useState(false);
 
 
-    
 
     // google sign in
     const auth = getAuth(app);
@@ -33,7 +36,20 @@ const Register = () => {
             .then(result => {
                 const user = result.user
                 console.log(user);
-                navigate(location?.state ? location.stale: '/')
+                navigate(location?.state ? location.stale : '/')
+            })
+            .catch(error = () => {
+                console.log(error.message);
+            })
+    }
+
+    const gitProvider = new GithubAuthProvider();
+    const handleGithubSignIn = () => {
+        signInWithPopup(auth, gitProvider)
+            .then(result => {
+                const NewUser = result.NewUser;
+                console.log(NewUser);
+                navigate(location?.state ? location.stale : '/')
             })
             .catch(error = () => {
                 console.log(error.message);
@@ -41,6 +57,8 @@ const Register = () => {
     }
 
 
+
+    // Register with email and password
     const handleRegister = e => {
         e.preventDefault();
         console.log(e.currentTarget);
@@ -54,6 +72,36 @@ const Register = () => {
         console.log(name, url, email, password);
 
 
+        // Register error check and Register succes check 
+        setRegError('')
+        setSuccess('')
+
+        if (password.length < 6) {
+            setRegError('Password should be at least 6 character or longer');
+            return;
+        }
+        else if (!/[A-Z]/.test(password)) {
+            setRegError('Password should have at least one upper case character')
+            return;
+        }
+        else if (!/[a-z]/.test(password)) {
+            setRegError('Password should have at least one lowercase character');
+            return;
+        }
+
+
+        createUser(email, password)
+            .then(result => {
+                console.log(result.user);
+                setSuccess('User created successfully')
+                navigate(location?.state ? location.stale : '/')
+            })
+            .catch(error => {
+                console.error(error);
+                setRegError(error.message)
+
+            })
+
 
         // if (password.length < 6) {
         //     toast.warn("Your password needs a minimum of four characters")
@@ -66,17 +114,6 @@ const Register = () => {
         // } else {
         //     toast.success("Registered success fully")
         // }
-
-
-
-        createUser(email, password)
-            .then(result => {
-                console.log(result.user);
-                navigate(location?.state ? location.stale: '/')
-            })
-            .catch(error => {
-                console.error(error);
-            })
 
         // const name = e.target.name.value;
         // const url = e.target.url.value;
@@ -107,9 +144,9 @@ const Register = () => {
 
                                 <div className="form-control ">
                                     <label className="label">
-                                        <span className="label-text">Email</span>
+                                        <span className="label-text">Your Name</span>
                                     </label>
-                                    <input type="text" placeholder="Enter Your Name" className="input input-bordered px-24 " required name='name' />
+                                    <input type="text" placeholder="Enter Your Name" className="input input-bordered lg:px-24 " required name='name' />
                                 </div>
 
 
@@ -131,7 +168,22 @@ const Register = () => {
                                     <label className="label">
                                         <span className="label-text">Password</span>
                                     </label>
-                                    <input type="password" placeholder="password" className="input input-bordered" required name='password' />
+
+                                    <div className='flex'>
+                                        <input
+                                            type={showPass ? "text" : "password"}
+                                            placeholder="password"
+                                            className="input input-bordered lg:px-16"
+                                            required name='password' />
+                                        <span className='mt-5 ml-2' onClick={() => setShowPass(!showPass)} >
+                                            {
+                                                showPass ? <FaEyeSlash /> : <FaEye />
+                                            }
+                                        </span>
+                                    </div>
+
+
+
                                     <label className="label">
                                         <a href="#" className="label-text-alt link link-hover">Forgot password?</a>
                                     </label>
@@ -148,11 +200,24 @@ const Register = () => {
                             </form>
 
                             <div className='text-center'>
+
                                 <h2 className="text-xl mb-4">Login With</h2>
-                                <div className=' flex justify-center'>
-                                    <button onClick={handleGoogleSignIn} className="  mr-5"> <FcGoogle className='h-[30px] w-[30px]' /> </button>
-                                    <button className=""> <FaGithub className='h-[30px] w-[30px]' /> </button>
+
+                                <div className=' flex justify-center mb-3'>
+                                    <button onClick={handleGoogleSignIn} className="mr-5"> <FcGoogle className='h-[30px] w-[30px]' /> </button>
+
+                                    <button onClick={handleGithubSignIn} className=""> <FaGithub className='h-[30px] w-[30px]' /> </button>
+
                                 </div>
+
+                                {
+                                    regError && <p className='text-red-600 ' > {regError} </p>
+                                }
+
+                                {
+                                    success && <p className='text-green-600 ' > {success} </p>
+                                }
+
 
                             </div>
 

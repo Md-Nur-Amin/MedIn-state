@@ -1,0 +1,36 @@
+.slide {
+    
+    margin-top: 10vh;
+    height: 70vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    border-radius: 20px;
+}
+
+.slide1{
+
+    background-image: url('../../../src/assets/hospital_one.jpg');
+}
+
+.slide2{
+
+    background-image: url('../../../src/assets/hospital_two.jpg');
+}
+
+.slide3{
+    background-image: url('../../../src/assets/hospital_three.jpg');
+}
+
+/* .slide4{
+
+    background-image: url('../../assets/1.jpg');
+}
+.slide5{
+
+    background-image: url('../../assets/6.jpg');
+} */

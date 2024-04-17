@@ -6,6 +6,7 @@ import Register from "../Pages/Register/Register";
 import CardDetails from "../Pages/CardDetails/CardDetails";
 import PrivateRoute from "./PrivateRoute";
 import Profile from "../Pages/Profile/Profile";
+import About from "../Pages/About/About";
 
 const routes = createBrowserRouter([
     {
@@ -19,7 +20,8 @@ const routes = createBrowserRouter([
             },
             {
                 path: '/cards/:id',
-                element: <PrivateRoute> <CardDetails></CardDetails> </PrivateRoute>
+                element: <PrivateRoute> <CardDetails></CardDetails> </PrivateRoute>,
+                loader: () => fetch('/card.json')
                 // element: <CardDetails></CardDetails>
             },
             {
@@ -35,6 +37,10 @@ const routes = createBrowserRouter([
             {
                 path: '/login',
                 element: <Login></Login>
+            },
+            {
+                path: '/about',
+                element: <About></About>
             }
         ]
     }

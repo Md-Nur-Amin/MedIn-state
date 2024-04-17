@@ -13,7 +13,7 @@ const Card = ({ cards }) => {
 
     return (
         <div className="">
-            <div className="card w-96 bg-base-100 shadow-xl" data-aos="zoom-in-left">
+            <div className="card lg:w-96 my-5  mx-auto bg-base-100 shadow-xl" data-aos="zoom-in-left">
                 <figure><img src={image_url} alt="Shoes" /> </figure>
                 <div className="card-body">
                     <h2 className="card-title"> {estate_title} </h2>
