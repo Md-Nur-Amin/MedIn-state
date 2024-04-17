@@ -12,6 +12,8 @@ import { FaEyeSlash } from "react-icons/fa";
 import { FaEye } from "react-icons/fa";
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import { Helmet } from 'react-helmet';
+import { HelmetProvider } from 'react-helmet-async';
 
 
 
@@ -103,133 +105,117 @@ const Register = () => {
             })
 
 
-        // if (password.length < 6) {
-        //     toast.warn("Your password needs a minimum of four characters")
-        // } else if (password.search(/[a-z]/) < 0) {
-        //     toast.warn("Your password needs a lower case letter")
-        // } else if (password.search(/[A-Z]/) < 0) {
-        //     toast.warn("Your password needs an uppser case letter")
-        // } else if (password.search(/[0-9]/) < 0) {
-        //     toast.warn("Your password needs a number")
-        // } else {
-        //     toast.success("Registered success fully")
-        // }
-
-        // const name = e.target.name.value;
-        // const url = e.target.url.value;
-        // const email = e.target.email.value;
-        // const password = e.target.password.value;
-        // console.log(name, url, email, password);
     }
 
-    // const toggle = () => {
-    //     setOpen(!open)
-    // }
+
 
 
     return (
         <div>
-            <Navbar></Navbar>
+            <HelmetProvider>
+                <Helmet><title>Register</title></Helmet>
+
+                <Navbar></Navbar>
+
+                <div>
+                    <div className="hero min-h-screen bg-base-200">
+                        <div className="hero-content flex-col lg:flex-row-reverse">
+
+                            <div className="card shrink-0 w-full max-w-sm shadow-2xl bg-base-100 py-5">
 
 
-            <div>
-                <div className="hero min-h-screen bg-base-200">
-                    <div className="hero-content flex-col lg:flex-row-reverse">
+                                {/* Form section */}
+                                <form onSubmit={handleRegister} className="card-body ">
 
-                        <div className="card shrink-0 w-full max-w-sm shadow-2xl bg-base-100 py-5">
-
-
-                            {/* Form section */}
-                            <form onSubmit={handleRegister} className="card-body ">
-
-                                <div className="form-control ">
-                                    <label className="label">
-                                        <span className="label-text">Your Name</span>
-                                    </label>
-                                    <input type="text" placeholder="Enter Your Name" className="input input-bordered lg:px-24 " required name='name' />
-                                </div>
-
-
-                                <div className="form-control my-4">
-                                    <label className="label">
-                                        <span className="label-text">Picture url</span>
-                                    </label>
-                                    <input type="url" placeholder="Enter picture url" className="input input-bordered" required name='url' />
-                                </div>
-
-                                <div className="form-control">
-                                    <label className="label">
-                                        <span className="label-text">Email</span>
-                                    </label>
-                                    <input type="email" placeholder="email" className="input input-bordered" required name='email' />
-                                </div>
-
-                                <div className="form-control my-4">
-                                    <label className="label">
-                                        <span className="label-text">Password</span>
-                                    </label>
-
-                                    <div className='flex'>
-                                        <input
-                                            type={showPass ? "text" : "password"}
-                                            placeholder="password"
-                                            className="input input-bordered lg:px-16"
-                                            required name='password' />
-                                        <span className='mt-5 ml-2' onClick={() => setShowPass(!showPass)} >
-                                            {
-                                                showPass ? <FaEyeSlash /> : <FaEye />
-                                            }
-                                        </span>
+                                    <div className="form-control ">
+                                        <label className="label">
+                                            <span className="label-text">Your Name</span>
+                                        </label>
+                                        <input type="text" placeholder="Enter Your Name" className="input input-bordered lg:px-24 " required name='name' />
                                     </div>
 
 
+                                    <div className="form-control my-4">
+                                        <label className="label">
+                                            <span className="label-text">Picture url</span>
+                                        </label>
+                                        <input type="text" placeholder="Enter picture url" className="input input-bordered" required name='url' />
+                                    </div>
 
-                                    <label className="label">
-                                        <a href="#" className="label-text-alt link link-hover">Forgot password?</a>
-                                    </label>
+                                    <div className="form-control">
+                                        <label className="label">
+                                            <span className="label-text">Email</span>
+                                        </label>
+                                        <input type="email" placeholder="email" className="input input-bordered" required name='email' />
+                                    </div>
+
+                                    <div className="form-control my-4">
+                                        <label className="label">
+                                            <span className="label-text">Password</span>
+                                        </label>
+
+                                        <div className='flex'>
+                                            <input
+                                                type={showPass ? "text" : "password"}
+                                                placeholder="password"
+                                                className="input input-bordered lg:px-16"
+                                                required name='password' />
+                                            <span className='mt-5 ml-2' onClick={() => setShowPass(!showPass)} >
+                                                {
+                                                    showPass ? <FaEyeSlash /> : <FaEye />
+                                                }
+                                            </span>
+                                        </div>
+
+
+
+                                        <label className="label">
+                                            <a href="#" className="label-text-alt link link-hover">Forgot password?</a>
+                                        </label>
+                                    </div>
+
+                                    <div className="form-control mt-6">
+                                        <button className="btn btn-primary">Register</button>
+                                    </div>
+                                    <p>Already have an account go to <Link to='/login' className='font-bold text-blue-500 underline' >Login</Link>  </p>
+
+
+                                    {/* Google and github authentication */}
+                                    <hr />
+                                </form>
+
+                                <div className='text-center'>
+
+                                    <h2 className="text-xl mb-4">Login With</h2>
+
+                                    <div className=' flex justify-center mb-3'>
+                                        <button onClick={handleGoogleSignIn} className="mr-5"> <FcGoogle className='h-[30px] w-[30px]' /> </button>
+
+                                        <button onClick={handleGithubSignIn} className=""> <FaGithub className='h-[30px] w-[30px]' /> </button>
+
+                                    </div>
+
+                                    {
+                                        regError && <p className='text-red-600 ' > {regError} </p>
+                                    }
+
+                                    {
+                                        success && <p className='text-green-600 ' > {success} </p>
+                                    }
+
+
                                 </div>
-
-                                <div className="form-control mt-6">
-                                    <button className="btn btn-primary">Register</button>
-                                </div>
-                                <p>Already have an account go to <Link to='/login' className='font-bold text-blue-500 underline' >Login</Link>  </p>
-
-
-                                {/* Google and github authentication */}
-                                <hr />
-                            </form>
-
-                            <div className='text-center'>
-
-                                <h2 className="text-xl mb-4">Login With</h2>
-
-                                <div className=' flex justify-center mb-3'>
-                                    <button onClick={handleGoogleSignIn} className="mr-5"> <FcGoogle className='h-[30px] w-[30px]' /> </button>
-
-                                    <button onClick={handleGithubSignIn} className=""> <FaGithub className='h-[30px] w-[30px]' /> </button>
-
-                                </div>
-
-                                {
-                                    regError && <p className='text-red-600 ' > {regError} </p>
-                                }
-
-                                {
-                                    success && <p className='text-green-600 ' > {success} </p>
-                                }
 
 
                             </div>
-
-
                         </div>
                     </div>
+
                 </div>
 
-            </div>
 
-
-            <Footer></Footer>
+                <Footer></Footer>
+                </HelmetProvider>
         </div>
     );
 };

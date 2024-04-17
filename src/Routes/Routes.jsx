@@ -7,6 +7,7 @@ import CardDetails from "../Pages/CardDetails/CardDetails";
 import PrivateRoute from "./PrivateRoute";
 import Profile from "../Pages/Profile/Profile";
 import About from "../Pages/About/About";
+import UpdateProfile from "../Pages/UpdateProfile/UpdateProfile";
 
 const routes = createBrowserRouter([
     {
@@ -29,6 +30,10 @@ const routes = createBrowserRouter([
                 element: <PrivateRoute> <Profile></Profile> </PrivateRoute>
                 // element: <CardDetails></CardDetails>
                 // element: <Profile></Profile>
+            },
+            {
+                path: '/profile',
+                element:  <UpdateProfile></UpdateProfile> 
             },
             {
                 path: '/register',

@@ -32,7 +32,7 @@ const navLinks = <>
 
 return (
     <div className="">
-        <div className="bg-slate-600 lg:px-16" >
+        <div className="bg-slate-600 lg:px-16 py-3" >
             <div className="navbar ">
                 <div className="navbar-start">
                     <div className="dropdown">
@@ -58,21 +58,21 @@ return (
 
 
                 <div className="navbar-end">
-                    <div className="dropdown dropdown-end">
+                    <div className="dropdown dropdown-end lg:tooltip" data-tip= {user?.displayName}>
                         <div tabIndex={0} role="button" className="btn btn-ghost btn-circle avatar">
-                            <div className="w-10 rounded-full">
-                                <img src={user?.photoURL} className="max-w-sm rounded-lg shadow-2xl" alt="User Avatar" />
+                            <div className="w-10 rounded-full ">
+                                <img src={user?.photoURL} className="max-w-sm rounded-lg shadow-2xl "  alt="User Avatar" />
 
                             </div>
                         </div>
-                        <ul tabIndex={0} className="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-32">
+                        <ul tabIndex={0} className="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-32 " >
                         <li><a> {user?.displayName} </a></li>
                             <li>
                                  <Link to="/profile" > Profile </Link>
                             </li>
                             
 
-                            {/* This logout button is going to be conditional */}
+                            {/* This logout button is conditional */}
                             {
                                 user ? <li onClick={handleLogOut} ><a>Log Out</a></li>
                                     : <Link to='/login'> <li><a>Login</a></li>  </Link>

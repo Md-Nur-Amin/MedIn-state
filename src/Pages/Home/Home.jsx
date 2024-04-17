@@ -3,6 +3,7 @@ import Banner from "../Banner/Banner";
 import Footer from "../Shared/Footer/Footer";
 import Navbar from "../Shared/Navbar/Navbar";
 import Card from "./Card/Card";
+import { Helmet, HelmetProvider } from 'react-helmet-async';
 
 
 
@@ -13,6 +14,8 @@ const Home = () => {
 
     return (
         <div >
+            <HelmetProvider>
+            <Helmet><title> Home Page</title></Helmet>
             <Navbar></Navbar>
             <Banner></Banner>
 
@@ -49,6 +52,7 @@ const Home = () => {
 
 
             <Footer></Footer>
+            </HelmetProvider>
         </div>
     );
 };

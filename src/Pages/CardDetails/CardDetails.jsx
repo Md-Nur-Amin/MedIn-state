@@ -1,10 +1,11 @@
-import { useLoaderData, useParams } from "react-router-dom";
+import { Link, useLoaderData, useParams } from "react-router-dom";
 import Footer from "../Shared/Footer/Footer";
 import Navbar from "../Shared/Navbar/Navbar";
 import { IoMdPricetags } from "react-icons/io";
 import { GrStatusWarning } from "react-icons/gr";
-import { BiArea } from "react-icons/bi";
-
+import { Helmet, HelmetProvider } from 'react-helmet-async';
+import { MdOutlineDescription } from "react-icons/md";
+import { CiLocationOn } from "react-icons/ci";
 
 const CardDetails = () => {
 
@@ -16,6 +17,8 @@ const CardDetails = () => {
 
     return (
         <div>
+            <HelmetProvider>
+            <Helmet><title>Card Property</title></Helmet>
             <Navbar></Navbar>
             {/* 
             <p> {id} </p>
@@ -23,29 +26,44 @@ const CardDetails = () => {
 
             <div>
                 <div className="hero min-h-screen bg-base-200 ">
-                    <div className="hero-content flex-col lg:flex-row mr-52 lg:h-[550px] w-[900px] ">
-                        <img src={card.image_url} className="lg:max-w-sm rounded-lg shadow-2xl pb-20" />
-                        <div>
-                            <h1 className="text-2xl lg:text-4xl font-bold"> {card.estate_title} </h1>
-                            
-                            <p className="text-2xl font-medium my-4"> {card.segment_name} </p>
-                            <hr className="border-dashed" />
-                            <div className="flex gap-x-5 my-4">
-                            <p className="flex gap-x-2 text-xl "> <IoMdPricetags className="mt-1 text-green-400" /> {card.price} </p>
+                    <div className="hero-content flex-col lg:flex-row lg:mx-20 lg:h-[550px]  ">
 
-                            <p className="flex gap-x-2 text-xl"> <GrStatusWarning className="mt-1 text-yellow-300"/> {card.status} </p>
+                        <img src={card.image_url} className="lg:max-w-sm shadow-2xl pb-24 rounded-3xl lg:rounded-l-3xl " />
+
+                        <div className="lg:ml-8 ml-3">
+                            <h1 className="text-2xl lg:text-4xl font-bold"> {card.estate_title} </h1>
+
+                            <p className="text-2xl font-medium my-4"> {card.segment_name} </p>
+
+
+                            <div className="flex gap-x-2  lg:gap-x-10">
+                                <p className="flex gap-x-2 mb-4 lg:text-xl font-medium"> <CiLocationOn className="text-green-400 mt-1" /> {card.location} </p>
+
+                                <p className="flex gap-x-2 lg:text-xl font-medium"> {card.area} </p>
                             </div>
 
-                            <p className="flex gap-x-2 ">  <BiArea /> {card.area} </p>
-                            <p className="py-"> {card.location} </p>
-                            <p className="py-"> {card.facilities} </p>
-                            <p className="py-"> {card.description} </p>
-                            <button className="btn btn-primary">Get Started</button>
+
+                            <hr className="border-dashed my-5" />
+                            <p className="flex gap-x-2"> <MdOutlineDescription /> {card.description} </p>
+
+                            <hr className="border-dashed my-5" />
+
+
+                            <div className="flex gap-x-5 my-4">
+                                <p className="flex gap-x-2 text-xl font-medium"> <IoMdPricetags className="mt-1 text-green-400" /> {card.price} </p>
+
+                                <p className="flex gap-x-2 text-xl font-medium"> <GrStatusWarning className="mt-1 text-yellow-300" /> {card.status} </p>
+                            </div>
+
+                            {/* <p className="py-"> {card.facilities} </p> */}
+
+                            <button className="btn btn-primary "> <Link to='/' > Go Back </Link></button>
                         </div>
                     </div>
                 </div>
             </div>
             <Footer></Footer>
+            </HelmetProvider>
         </div>
     );
 };

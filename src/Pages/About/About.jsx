@@ -1,11 +1,15 @@
 import { Link } from "react-router-dom";
 import Footer from "../Shared/Footer/Footer";
 import Navbar from "../Shared/Navbar/Navbar";
+import { HelmetProvider } from "react-helmet-async";
+import { Helmet } from "react-helmet";
 
 
 const About = () => {
     return (
         <div>
+            <HelmetProvider>
+            <Helmet><title>About</title></Helmet>
             <Navbar></Navbar>
             <div>
                 <div className=" my-10  mx-auto flex-col max-w-xl p-8 shadow-sm rounded-xl lg:p-12 bg-gray-50 text-gray-800">
@@ -53,6 +57,7 @@ const About = () => {
             </div>
 
             <Footer></Footer>
+            </HelmetProvider>
         </div>
     );
 };

@@ -1,7 +1,11 @@
 import 'animate.css';
-import hospital_one from "../../assets/hospital_one.jpg"
-import hospital_two from "../../assets/hospital_two.jpg"
-import hospital_three from "../../assets/hospital_three.jpg"
+import { Swiper, SwiperSlide } from 'swiper/react';
+import 'swiper/css';
+import 'swiper/css/pagination';
+import 'swiper/css/navigation';
+import { Autoplay, Pagination, Navigation } from 'swiper/modules';
+import './Banner.css'
+
 
 // const Banner = () => {
 //     return (
@@ -58,18 +62,13 @@ import hospital_three from "../../assets/hospital_three.jpg"
 // };
 
 
-import { Swiper, SwiperSlide } from 'swiper/react';
-import 'swiper/css';
-import 'swiper/css/pagination';
-import 'swiper/css/navigation';
-import { Autoplay, Pagination, Navigation } from 'swiper/modules';
-import './Banner.css'
+
 const Banner = () => {
     return (
         <div>
 
             <Swiper
-                spaceBetween={30}
+                spaceBetween={50}
                 centeredSlides={true}
                 autoplay={{
                     delay: 2500,
@@ -80,7 +79,7 @@ const Banner = () => {
                 }}
                 navigation={true}
                 modules={[Autoplay, Pagination, Navigation]}
-                className="mySwiper"
+                className="mySwiper mt-28"
             >
 
 
