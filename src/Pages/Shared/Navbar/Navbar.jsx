@@ -10,84 +10,118 @@ const Navbar = () => {
 
     const handleLogOut = () => {
         logOut()
-        .then()
-    .catch(error => {
-        console.error(error);
-    })
+            .then()
+            .catch(error => {
+                console.error(error);
+            })
     }
 
 
-const navLinks = <>
-    <li className="lg:text-white" ><NavLink to="/">Home</NavLink></li>
-    <li className="lg:text-white" ><NavLink to="/about">About</NavLink></li>
+    const navLinks = <>
+        <li className="lg:text-white" ><NavLink to="/">Home</NavLink></li>
+        <li className="lg:text-white" ><NavLink to="/about">About</NavLink></li>
 
-    <li className="lg:text-white" ><NavLink to="/profile">Profile</NavLink></li>
+        {/* <li className="lg:text-white" ><NavLink to="/profile">Profile</NavLink></li> */}
 
-    <li className="lg:text-white" ><NavLink to="/register">Register</NavLink></li>
+        <li className="lg:text-white" ><NavLink to="/register">Register</NavLink></li>
 
-</>
+        <li>
+            {
+                user &&
+                <>
+                    <NavLink className="lg:text-white" to='/update'
+                    >Update Profile </NavLink>
+                </>
+            }
+        </li>
+
+        <li>
+            {
+                user &&
+                <>
+                    <NavLink className="lg:text-white" to='/profile'
+                    > Profile </NavLink>
+                </>
+            }
+        </li>
 
 
 
 
-return (
-    <div className="">
-        <div className="bg-slate-600 lg:px-16 py-3" >
-            <div className="navbar ">
-                <div className="navbar-start">
-                    <div className="dropdown">
-                        <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
-                            <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h8m-8 6h16" /></svg>
+    </>
+
+
+
+
+    return (
+        <div className="">
+            <div className="bg-slate-600 lg:px-16 py-3" >
+                <div className="navbar ">
+                    <div className="navbar-start">
+                        <div className="dropdown">
+                            <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
+                                <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h8m-8 6h16" /></svg>
+                            </div>
+                            <ul tabIndex={0} className="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-32">
+                                {navLinks}
+                            </ul>
                         </div>
-                        <ul tabIndex={0} className="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-32">
+                        <div className="flex gap-x-2 lg:gap-3">
+                            <img className="h-[40px] w-[40px] lg:h-[64px] lg:w-[64px] " src={hospital} alt="" />
+                            <a className=" font-semibold lg:font-bold font-mono text-2xl lg:text-5xl mt-2 lg:mt-5 text-blue-950"> MED<span className="text-blue-400">IN</span>  </a>
+                        </div>
+
+                    </div>
+                    <div className="navbar-center hidden lg:flex">
+                        <ul className="menu menu-horizontal px-1">
                             {navLinks}
                         </ul>
                     </div>
-                    <div className="flex gap-x-2 lg:gap-3">
-                        <img className="h-[40px] w-[40px] lg:h-[64px] lg:w-[64px] " src={hospital} alt="" />
-                        <a className=" font-semibold lg:font-bold font-mono text-2xl lg:text-5xl mt-2 lg:mt-5 text-blue-950"> MED<span className="text-blue-400">IN</span>  </a>
-                    </div>
-
-                </div>
-                <div className="navbar-center hidden lg:flex">
-                    <ul className="menu menu-horizontal px-1">
-                        {navLinks}
-                    </ul>
-                </div>
 
 
 
-                <div className="navbar-end">
-                    <div className="dropdown dropdown-end lg:tooltip" data-tip= {user?.displayName}>
-                        <div tabIndex={0} role="button" className="btn btn-ghost btn-circle avatar">
-                            <div className="w-10 rounded-full ">
-                                <img src={user?.photoURL} className="max-w-sm rounded-lg shadow-2xl "  alt="User Avatar" />
+                    <div className="navbar-end">
+                        <div className="dropdown dropdown-end lg:tooltip" data-tip={user?.displayName}>
+                            <div tabIndex={0} role="button" className="btn btn-ghost btn-circle avatar">
+                                <div className="w-12 rounded-full ">
+                                    <img src={user?.photoURL} className="max-w-sm rounded-lg shadow-2xl " alt="User Avatar" />
 
+                                </div>
                             </div>
+                            <ul tabIndex={0} className="menu menu-sm dropdown-content mt-3 z-[1]  shadow bg-base-100 rounded-box w-32 " >
+                                <li><a> {user?.displayName} </a></li>
+                                <li>
+                                    <Link to="/about" > About </Link>
+                                </li>
+
+                                <li>
+                                    {
+                                        user &&
+                                        <>
+                                            <NavLink className="" to='/profile'
+                                            > Profile </NavLink>
+                                        </>
+                                    }
+                                </li>
+
+
+                                {/* This logout button is conditional */}
+                                {
+                                    user ? <li onClick={handleLogOut} ><a>Log Out</a></li>
+                                        : <Link to='/login'> <li><a>Login</a></li>  </Link>
+                                }
+
+
+                            </ul>
                         </div>
-                        <ul tabIndex={0} className="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-32 " >
-                        <li><a> {user?.displayName} </a></li>
-                            <li>
-                                 <Link to="/profile" > Profile </Link>
-                            </li>
-                            
-
-                            {/* This logout button is conditional */}
-                            {
-                                user ? <li onClick={handleLogOut} ><a>Log Out</a></li>
-                                    : <Link to='/login'> <li><a>Login</a></li>  </Link>
-                            }
-
-
-                        </ul>
                     </div>
+                    
+
+
                 </div>
-
-
             </div>
         </div>
-    </div>
-);
+    );
 };
 
 export default Navbar;

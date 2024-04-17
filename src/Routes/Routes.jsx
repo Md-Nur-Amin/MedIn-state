@@ -32,8 +32,8 @@ const routes = createBrowserRouter([
                 // element: <Profile></Profile>
             },
             {
-                path: '/profile',
-                element:  <UpdateProfile></UpdateProfile> 
+                path: '/update',
+                element: <PrivateRoute> <UpdateProfile></UpdateProfile> </PrivateRoute>  ,
             },
             {
                 path: '/register',

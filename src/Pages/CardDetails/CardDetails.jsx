@@ -19,7 +19,7 @@ const CardDetails = () => {
         <div>
             <HelmetProvider>
             <Helmet><title>Card Property</title></Helmet>
-            <Navbar></Navbar>
+            
             {/* 
             <p> {id} </p>
             <p> {card.estate_title} </p> */}
@@ -62,7 +62,7 @@ const CardDetails = () => {
                     </div>
                 </div>
             </div>
-            <Footer></Footer>
+           
             </HelmetProvider>
         </div>
     );

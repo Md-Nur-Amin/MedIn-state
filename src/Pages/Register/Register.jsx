@@ -21,7 +21,7 @@ const Register = () => {
 
     const navigate = useNavigate()
 
-    const { createUser } = useContext(AuthContext);
+    const { createUser, updateprofile } = useContext(AuthContext);
 
     const [user, setUser] = useState(null);
     const [regError, setRegError] = useState('')
@@ -92,132 +92,132 @@ const Register = () => {
         }
 
 
-        createUser(email, password)
-            .then(result => {
-                console.log(result.user);
-                setSuccess('User created successfully')
-                navigate(location?.state ? location.stale : '/')
-            })
-            .catch(error => {
-                console.error(error);
-                setRegError(error.message)
+        createUser(email, password, name, url)
+            .then(() => {
+                updateprofile(name, url)
+                    .then((result) => {
+                        console.log(result?.user);
+                        navigate(location?.state ? location.stale : '/')
+                    })
+                })
+                    .catch(error => {
+                        console.error(error);
+                        setRegError(error.message)
 
-            })
+                    })
 
 
-    }
-
-
+            }
 
 
     return (
-        <div>
-            <HelmetProvider>
-                <Helmet><title>Register</title></Helmet>
+            <div>
+                <HelmetProvider>
+                    <Helmet><title>Register</title></Helmet>
 
-                <Navbar></Navbar>
+                    
 
-                <div>
-                    <div className="hero min-h-screen bg-base-200">
-                        <div className="hero-content flex-col lg:flex-row-reverse">
+                    <div>
+                        <div className="hero min-h-screen bg-base-200">
+                            <div className="hero-content flex-col lg:flex-row-reverse">
 
-                            <div className="card shrink-0 w-full max-w-sm shadow-2xl bg-base-100 py-5">
-
-
-                                {/* Form section */}
-                                <form onSubmit={handleRegister} className="card-body ">
-
-                                    <div className="form-control ">
-                                        <label className="label">
-                                            <span className="label-text">Your Name</span>
-                                        </label>
-                                        <input type="text" placeholder="Enter Your Name" className="input input-bordered lg:px-24 " required name='name' />
-                                    </div>
+                                <div className="card shrink-0 w-full max-w-sm shadow-2xl bg-base-100 py-5">
 
 
-                                    <div className="form-control my-4">
-                                        <label className="label">
-                                            <span className="label-text">Picture url</span>
-                                        </label>
-                                        <input type="text" placeholder="Enter picture url" className="input input-bordered" required name='url' />
-                                    </div>
+                                    {/* Form section */}
+                                    <form onSubmit={handleRegister} className="card-body ">
 
-                                    <div className="form-control">
-                                        <label className="label">
-                                            <span className="label-text">Email</span>
-                                        </label>
-                                        <input type="email" placeholder="email" className="input input-bordered" required name='email' />
-                                    </div>
-
-                                    <div className="form-control my-4">
-                                        <label className="label">
-                                            <span className="label-text">Password</span>
-                                        </label>
-
-                                        <div className='flex'>
-                                            <input
-                                                type={showPass ? "text" : "password"}
-                                                placeholder="password"
-                                                className="input input-bordered lg:px-16"
-                                                required name='password' />
-                                            <span className='mt-5 ml-2' onClick={() => setShowPass(!showPass)} >
-                                                {
-                                                    showPass ? <FaEyeSlash /> : <FaEye />
-                                                }
-                                            </span>
+                                        <div className="form-control ">
+                                            <label className="label">
+                                                <span className="label-text">Your Name</span>
+                                            </label>
+                                            <input type="text" placeholder="Enter Your Name" className="input input-bordered lg:px-24 " required name='name' />
                                         </div>
 
 
+                                        <div className="form-control my-4">
+                                            <label className="label">
+                                                <span className="label-text">Picture url</span>
+                                            </label>
+                                            <input type="text" placeholder="Enter picture url" className="input input-bordered" required name='url' />
+                                        </div>
 
-                                        <label className="label">
-                                            <a href="#" className="label-text-alt link link-hover">Forgot password?</a>
-                                        </label>
+                                        <div className="form-control">
+                                            <label className="label">
+                                                <span className="label-text">Email</span>
+                                            </label>
+                                            <input type="email" placeholder="email" className="input input-bordered" required name='email' />
+                                        </div>
+
+                                        <div className="form-control my-4">
+                                            <label className="label">
+                                                <span className="label-text">Password</span>
+                                            </label>
+
+                                            <div className='flex'>
+                                                <input
+                                                    type={showPass ? "text" : "password"}
+                                                    placeholder="password"
+                                                    className="input input-bordered lg:px-16"
+                                                    required name='password' />
+                                                <span className='mt-5 ml-2' onClick={() => setShowPass(!showPass)} >
+                                                    {
+                                                        showPass ? <FaEyeSlash /> : <FaEye />
+                                                    }
+                                                </span>
+                                            </div>
+
+
+
+                                            <label className="label">
+                                                <a href="#" className="label-text-alt link link-hover">Forgot password?</a>
+                                            </label>
+                                        </div>
+
+                                        <div className="form-control mt-6">
+                                            <button className="btn btn-primary">Register</button>
+                                        </div>
+                                        <p>Already have an account go to <Link to='/login' className='font-bold text-blue-500 underline' >Login</Link>  </p>
+
+
+                                        {/* Google and github authentication */}
+                                        <hr />
+                                    </form>
+
+                                    <div className='text-center'>
+
+                                        <h2 className="text-xl mb-4">Login With</h2>
+
+                                        <div className=' flex justify-center mb-3'>
+                                            <button onClick={handleGoogleSignIn} className="mr-5"> <FcGoogle className='h-[30px] w-[30px]' /> </button>
+
+                                            <button onClick={handleGithubSignIn} className=""> <FaGithub className='h-[30px] w-[30px]' /> </button>
+
+                                        </div>
+
+                                        {
+                                            regError && <p className='text-red-600 ' > {regError} </p>
+                                        }
+
+                                        {
+                                            success && <p className='text-green-600 ' > {success} </p>
+                                        }
+
+
                                     </div>
-
-                                    <div className="form-control mt-6">
-                                        <button className="btn btn-primary">Register</button>
-                                    </div>
-                                    <p>Already have an account go to <Link to='/login' className='font-bold text-blue-500 underline' >Login</Link>  </p>
-
-
-                                    {/* Google and github authentication */}
-                                    <hr />
-                                </form>
-
-                                <div className='text-center'>
-
-                                    <h2 className="text-xl mb-4">Login With</h2>
-
-                                    <div className=' flex justify-center mb-3'>
-                                        <button onClick={handleGoogleSignIn} className="mr-5"> <FcGoogle className='h-[30px] w-[30px]' /> </button>
-
-                                        <button onClick={handleGithubSignIn} className=""> <FaGithub className='h-[30px] w-[30px]' /> </button>
-
-                                    </div>
-
-                                    {
-                                        regError && <p className='text-red-600 ' > {regError} </p>
-                                    }
-
-                                    {
-                                        success && <p className='text-green-600 ' > {success} </p>
-                                    }
 
 
                                 </div>
-
-
                             </div>
                         </div>
+
                     </div>
 
-                </div>
 
-
-                <Footer></Footer>
+                    
                 </HelmetProvider>
-        </div>
-    );
-};
+            </div>
+        );
+    };
 
-export default Register;
+    export default Register;

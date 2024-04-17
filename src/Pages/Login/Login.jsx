@@ -9,6 +9,8 @@ import { GithubAuthProvider, GoogleAuthProvider, getAuth, signInWithPopup } from
 import app from "../../Firebase/firebase.config";
 import { FaEyeSlash } from "react-icons/fa";
 import { FaEye } from "react-icons/fa";
+import { HelmetProvider } from "react-helmet-async";
+import { Helmet } from "react-helmet";
 
 const Login = () => {
 
@@ -103,9 +105,9 @@ const Login = () => {
 
     return (
         <div>
-            <Navbar></Navbar>
-
-
+            <HelmetProvider>
+            <Helmet><title>About</title></Helmet>
+            
             <div>
                 <div className="hero min-h-screen bg-base-200">
                     <div className="hero-content flex-col lg:flex-row-reverse">
@@ -202,7 +204,7 @@ const Login = () => {
             </div>
 
 
-            <Footer></Footer>
+            </HelmetProvider>
         </div>
     );
 };

@@ -1,7 +1,5 @@
 import { useLoaderData } from "react-router-dom";
 import Banner from "../Banner/Banner";
-import Footer from "../Shared/Footer/Footer";
-import Navbar from "../Shared/Navbar/Navbar";
 import Card from "./Card/Card";
 import { Helmet, HelmetProvider } from 'react-helmet-async';
 
@@ -16,7 +14,7 @@ const Home = () => {
         <div >
             <HelmetProvider>
             <Helmet><title> Home Page</title></Helmet>
-            <Navbar></Navbar>
+           
             <Banner></Banner>
 
             {/* Card section */}
@@ -51,7 +49,7 @@ const Home = () => {
 
 
 
-            <Footer></Footer>
+           
             </HelmetProvider>
         </div>
     );
