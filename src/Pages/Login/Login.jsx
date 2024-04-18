@@ -1,8 +1,6 @@
-import Navbar from "../Shared/Navbar/Navbar";
 import { FcGoogle } from "react-icons/fc";
 import { FaGithub } from "react-icons/fa";
 import { Link, Navigate, useNavigate } from "react-router-dom";
-import Footer from "../Shared/Footer/Footer";
 import { useContext, useState } from "react";
 import { AuthContext } from "../../Providers/AuthProvider";
 import { GithubAuthProvider, GoogleAuthProvider, getAuth, signInWithPopup } from "firebase/auth";
@@ -11,6 +9,7 @@ import { FaEyeSlash } from "react-icons/fa";
 import { FaEye } from "react-icons/fa";
 import { HelmetProvider } from "react-helmet-async";
 import { Helmet } from "react-helmet";
+import Swal from 'sweetalert2';
 
 const Login = () => {
 
@@ -34,10 +33,19 @@ const Login = () => {
                 navigate(location?.state ? location.stale : '/')
                 console.log(result.user);
                 setSuccess('User Login successfully')
+                Swal.fire({
+                    icon: 'success',
+                    title: 'Login successfully'
+                });
             })
             .catch(error => {
                 console.error(error);
                 setRegError(error.message)
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Account not created, Please Register'
+                });
+                return;
             })
 
 
@@ -45,17 +53,27 @@ const Login = () => {
         setSuccess('')
 
         if (password.length < 6) {
-            setRegError('Password should be at least 6 character or longer');
+            Swal.fire({
+                icon: 'info',
+                title: 'Password should be at least 6 characters or longer'
+            });
             return;
         }
         else if (!/[A-Z]/.test(password)) {
-            setRegError('Password should have at least one upper case character')
+            Swal.fire({
+                icon: 'info',
+                title: 'Password should have at least one uppercase character'
+            });
             return;
         }
         else if (!/[a-z]/.test(password)) {
-            setRegError('Password should have at least one lowercase character');
+            Swal.fire({
+                icon: 'info',
+                title: 'Password should have at least one lowercase character'
+            });
             return;
         }
+        
         // const name = e.target.name.value;
         // const url = e.target.url.value;
         // const email = e.target.email.value;
@@ -72,10 +90,15 @@ const Login = () => {
             .then(result => {
                 const user = result.user
                 console.log(user);
+                Swal.fire({
+                    icon: 'success',
+                    title: 'Login successfully'
+                });
                 navigate(location?.state ? location.stale : '/')
             })
             .catch(error = () => {
                 console.log(error.message);
+                
             })
     }
 
@@ -85,6 +108,10 @@ const Login = () => {
             .then(result => {
                 const NewUser = result.NewUser;
                 console.log(NewUser);
+                Swal.fire({
+                    icon: 'success',
+                    title: 'Login successfully'
+                });
                 navigate(location?.state ? location.stale : '/')
             })
             .catch(error = () => {

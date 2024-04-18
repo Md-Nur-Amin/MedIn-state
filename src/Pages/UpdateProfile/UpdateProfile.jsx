@@ -1,6 +1,4 @@
 import { useState, useContext, useEffect } from "react";
-// import { AuthContext } from "../Provider/AuthProvider";
-
 import Swal from 'sweetalert2';
 import 'aos/dist/aos.css';
 import 'animate.css';
