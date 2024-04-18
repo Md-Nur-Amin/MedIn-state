@@ -20,6 +20,7 @@ const Navbar = () => {
     const navLinks = <>
         <li className="lg:text-white font-popins" ><NavLink to="/">Home</NavLink></li>
         <li className="lg:text-white font-popins" ><NavLink to="/about">About</NavLink></li>
+        <li className="lg:text-white font-popins" ><NavLink to="/contact us">Contact us</NavLink></li>
 
         {/* <li className="lg:text-white" ><NavLink to="/profile">Profile</NavLink></li> */}
 
