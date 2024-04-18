@@ -80,10 +80,10 @@ const Navbar = () => {
 
 
 
-                    <div className="navbar-end">
+                    <div className="navbar-end mr-3 lg:mr-0">
                         <div className="dropdown dropdown-end lg:tooltip" data-tip={user?.displayName}>
                             <div tabIndex={0} role="button" className="btn btn-ghost btn-circle avatar">
-                                <div className="w-12 rounded-full ">
+                                <div className=" w-10 mt-2 lg:w-12 rounded-full ">
                                     <img src={user?.photoURL} className="max-w-sm rounded-lg shadow-2xl " alt="User Avatar" />
 
                                 </div>

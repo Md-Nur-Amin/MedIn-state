@@ -85,22 +85,22 @@ const Banner = () => {
 
                 <SwiperSlide>
                     <div className="slide slide1">
-                        <h2 className="absolute inset-x-0 text-3xl lg:text-5xl text-center top-12 lg:top-32 text-black font-bold  lg:font-extrabold font-popins">Welcome to MEDIN</h2>
-                        <h2 className="absolute inset-x-0 text-center top-20 lg:top-48 text-stone-950 font-medium lg:text-2xlfont-popins ">Your Premier Destination for Hospitality Real Estate with MEDIN <br />Where Hospitality Meets Real Estate Excellence  </h2>
+                        <h2 className="absolute inset-x-0 text-3xl lg:text-5xl text-center top-28 lg:top-32 text-black font-bold  lg:font-extrabold font-popins">Welcome to MEDIN</h2>
+                        <h2 className="absolute inset-x-0 text-center top-1/2 lg:top-48 text-stone-950 font-medium lg:text-2xlfont-popins ">Your Premier Destination for Hospitality Real Estate with MEDIN <br />Where Hospitality Meets Real Estate Excellence  </h2>
                     </div>
                 </SwiperSlide>
 
                 <SwiperSlide>
                     <div className="slide slide2 ">
-                        <h2 className="absolute inset-x-0 text-3xl lg:text-5xl text-center top-12 lg:top-32 text-black font-bold  lg:font-extrabold font-popins">Welcome to MEDIN</h2>
-                        <h2 className="absolute inset-x-0 text-center top-20 lg:top-48 text-stone-950 font-medium lg:text-2xl font-popins">Your Premier Destination for Hospitality Real Estate with MEDIN <br />Where Hospitality Meets Real Estate Excellence  </h2>
+                        <h2 className="absolute inset-x-0 text-3xl lg:text-5xl text-center top-28 lg:top-32 text-black font-bold  lg:font-extrabold font-popins">Welcome to MEDIN</h2>
+                        <h2 className="absolute inset-x-0 text-center top-1/2 lg:top-48 text-stone-950 font-medium lg:text-2xl font-popins">Your Premier Destination for Hospitality Real Estate with MEDIN <br />Where Hospitality Meets Real Estate Excellence  </h2>
                     </div>
                 </SwiperSlide>
 
                 <SwiperSlide>
                     <div className="slide slide3">
-                        <h2 className="absolute inset-x-0 text-3xl lg:text-5xl text-center top-12 lg:top-32 text-black font-bold  lg:font-extrabold font-popins">Welcome to MEDIN</h2>
-                        <h2 className="absolute inset-x-0 text-center top-20 lg:top-48 text-stone-950 font-medium lg:text-2xl font-popins ">Your Premier Destination for Hospitality Real Estate with MEDIN <br />Where Hospitality Meets Real Estate Excellence  </h2>
+                        <h2 className="absolute inset-x-0 text-3xl lg:text-5xl text-center top-28 lg:top-32 text-black font-bold  lg:font-extrabold font-popins">Welcome to MEDIN</h2>
+                        <h2 className="absolute inset-x-0 text-center top-1/2 lg:top-48 text-stone-950 font-medium lg:text-2xl font-popins ">Your Premier Destination for Hospitality Real Estate with MEDIN <br />Where Hospitality Meets Real Estate Excellence  </h2>
                     </div>
                 </SwiperSlide>
 

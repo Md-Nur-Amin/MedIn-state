@@ -109,10 +109,10 @@ const Login = () => {
             <Helmet><title>About</title></Helmet>
             
             <div>
-                <div className="hero min-h-screen bg-base-200">
+                <div className="hero  bg-base-200">
                     <div className="hero-content flex-col lg:flex-row-reverse">
 
-                        <div className="card shrink-0 w-full max-w-sm shadow-2xl bg-base-100 py-5">
+                        <div className="card shrink-0 max-w-sm shadow-2xl bg-base-100 py-6">
 
 
                             {/* Form section */}
@@ -122,7 +122,7 @@ const Login = () => {
                                     <label className="label">
                                         <span className="label-text">Email</span>
                                     </label>
-                                    <input type="text" placeholder="Enter Your Name" className="input input-bordered px-24 " required name='name' />
+                                    <input type="text" placeholder="Enter Your Name" className="input input-bordered lg:px-24 " required name='name' />
                                 </div>
 
 
@@ -140,6 +140,8 @@ const Login = () => {
                                     <input type="email" placeholder="email" className="input input-bordered" required name='email' />
                                 </div>
 
+
+
                                 <div className="form-control my-4">
                                     <label className="label">
                                         <span className="label-text">Password</span>
@@ -150,7 +152,7 @@ const Login = () => {
                                             type={showPass ? "text" : "password"}
                                             placeholder="password"
                                             className="input input-bordered lg:px-16"
-                                            required name='password' />
+                                            required name='password'  />
                                         <span className='mt-5 ml-2' onClick={() => setShowPass(!showPass)} >
                                             {
                                                 showPass ? <FaEyeSlash /> : <FaEye />
@@ -173,13 +175,13 @@ const Login = () => {
 
 
                                 {/* Google and github authentication */}
-                                <hr />
+                                <hr  />
                             </form>
 
                             <div className='text-center'>
                                 <h2 className="text-xl mb-4">Login With</h2>
                                 <div className=' flex justify-center'>
-                                    <button onClick={handleGoogleSignIn} className="  mr-5"> <FcGoogle className='h-[30px] w-[30px]' /> </button>
+                                    <button onClick={handleGoogleSignIn} className="  mr-5"> <FcGoogle className='h-[30px] w-[30px] ' /> </button>
 
                                     <button onClick={handleGithubSignIn} className=""> <FaGithub className='h-[30px] w-[30px]' /> </button>
                                 </div>
