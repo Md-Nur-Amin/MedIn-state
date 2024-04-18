@@ -36,8 +36,8 @@ const UpdateProfile = () => {
         <div >
 
             <HelmetProvider>
-                <Helmet><title> Home Page</title></Helmet>
-                {/* <Helmet><title>Update Profile</title></Helmet> */}
+                <Helmet><title>Profile Update</title></Helmet>
+                
 
                 <div  className="lg:flex gap-x-10">
 

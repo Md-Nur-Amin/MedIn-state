@@ -2,12 +2,23 @@ import { useLoaderData } from "react-router-dom";
 import Banner from "../Banner/Banner";
 import Card from "./Card/Card";
 import { Helmet, HelmetProvider } from 'react-helmet-async';
-
+import { useEffect } from "react";
+import Aos from "aos";
+import 'aos/dist/aos.css';
 
 
 const Home = () => {
+
+    
+        useEffect(() => {
+            Aos.init({ duration: 3000 });
+        }, []);
+
+
     const cards = useLoaderData();
     console.log(cards);
+
+
 
 
     return (
@@ -30,7 +41,7 @@ const Home = () => {
             </div>
 
             <div>
-                <div>
+                <div data-aos="fade-left">
                     <div className=" mx-8 rounded-t-3xl bg-gray-500 dark:bg-gray-500" style={{ backgroundImage: "url('https://source.unsplash.com/random/640x480')", backgroundPosition: "center center", backgroundBlendMode: "multiply", backgroundSize: "cover" }}>
                         <div className="container flex flex-col flex-wrap content-center justify-center p-4 py-20 mx-auto md:p-10">
                             <h1 className="text-5xl antialiased font-semibold leading-none text-center text-gray-100 dark:text-gray-800">Get Our Updates</h1>

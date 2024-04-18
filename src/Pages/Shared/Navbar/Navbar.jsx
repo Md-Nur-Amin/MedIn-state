@@ -1,5 +1,5 @@
 import { Link, NavLink } from "react-router-dom";
-import hospital from "../../../assets/hospital.png"
+import healthy from "../../../assets/healthy.png"
 import { useContext } from "react";
 import { AuthContext } from "../../../Providers/AuthProvider";
 
@@ -55,7 +55,7 @@ const Navbar = () => {
 
     return (
         <div className="">
-            <div className="bg-slate-600 lg:px-16 py-3" >
+            <div className="bg-slate-400 lg:px-16 py-1" >
                 <div className="navbar ">
                     <div className="navbar-start">
                         <div className="dropdown">
@@ -67,8 +67,8 @@ const Navbar = () => {
                             </ul>
                         </div>
                         <div className="flex gap-x-2 lg:gap-3">
-                            <img className="h-[40px] w-[40px] lg:h-[64px] lg:w-[64px] " src={hospital} alt="" />
-                            <a className=" font-semibold lg:font-bold text-2xl lg:text-5xl mt-2 lg:mt-5 text-blue-950 font-popins"> MED<span className="text-blue-400">IN</span>  </a>
+                            <img className="h-[40px] w-[40px] lg:h-[64px] lg:w-[64px] " src={healthy} alt="" />
+                            <a className=" font-semibold lg:font-bold text-2xl lg:text-4xl mt-2 lg:mt-5 text-blue-950 font-popins"> MED<span className="text-cyan-700">IN</span>  </a>
                         </div>
 
                     </div>
@@ -80,7 +80,7 @@ const Navbar = () => {
 
 
 
-                    <div className="navbar-end mr-3 lg:mr-0">
+                    <div className="navbar-end mt-2 mr-3 lg:mr-0">
                         <div className="dropdown dropdown-end lg:tooltip" data-tip={user?.displayName}>
                             <div tabIndex={0} role="button" className="btn btn-ghost btn-circle avatar">
                                 <div className=" w-10 mt-2 lg:w-12 rounded-full ">

@@ -15,15 +15,18 @@
 .slide1{
 
     background-image: url('../../../src/assets/hospital_one.jpg');
+    opacity: 0.9;
 }
 
 .slide2{
 
     background-image: url('../../../src/assets/hospital_two.jpg');
+    opacity: 0.9;
 }
 
 .slide3{
     background-image: url('../../../src/assets/hospital_three.jpg');
+    opacity: 0.9;
 }
 
 /* .slide4{

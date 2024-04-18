@@ -13,13 +13,13 @@ const Card = ({ cards }) => {
 
     return (
         <div className="">
-            <div className="card lg:w-96 my-5  mx-auto bg-base-100 shadow-xl" data-aos="zoom-in-left">
+            <div className="card lg:w-96 my-5 font-popins mx-auto bg-base-100 shadow-xl" data-aos="zoom-in">
                 <figure><img src={image_url} alt="Shoes" /> </figure>
                 <div className="card-body">
-                    <h2 className="card-title"> {estate_title} </h2>
-                    <h2 className="card-title"> {location} </h2>
-                    <h2 className="card-title"> Price:  {price} </h2>
-                    <h2 className="card-title"> {status} </h2>
+                    <h2 className="card-title font-popins"> {estate_title} </h2>
+                    <h2 className=" text-xl font-medium font-popins"> {location} </h2>
+                    <h2 className=" font-popins"> Price: {price} </h2>
+                    <h2 className="text-sm font-popins"> {status} </h2>
 
                     {
                         description.length > 50 ? (

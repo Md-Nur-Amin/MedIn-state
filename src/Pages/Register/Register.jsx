@@ -134,7 +134,7 @@ const Register = () => {
     return (
         <div>
             <HelmetProvider>
-                <Helmet><title>Register</title></Helmet>
+                <Helmet><title> Register | MEDIN</title></Helmet>
 
 
 

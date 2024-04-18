@@ -1,16 +1,23 @@
 import { Link } from "react-router-dom";
 import { HelmetProvider } from "react-helmet-async";
 import { Helmet } from "react-helmet";
+import Aos from "aos";
+import 'aos/dist/aos.css';
+import { useEffect } from "react";
 
 
 const About = () => {
+    useEffect(() => {
+        Aos.init({ duration: 2000 });
+    }, []);
+
     return (
         <div>
             <HelmetProvider>
             <Helmet><title>About</title></Helmet>
          
             <div>
-                <div className=" my-10  mx-auto flex-col max-w-xl p-8 shadow-sm rounded-xl lg:p-12 bg-gray-50 text-gray-800">
+                <div className=" my-10  mx-auto flex-col max-w-xl p-8 shadow-sm rounded-xl lg:p-12 bg-gray-50 text-gray-800 " data-aos="zoom-in">
                     <div className="flex flex-col items-center w-full">
                         <h2 className="text-3xl font-semibold text-center">Your opinion matters!</h2>
                         <div className="flex flex-col items-center py-6 space-y-3">
