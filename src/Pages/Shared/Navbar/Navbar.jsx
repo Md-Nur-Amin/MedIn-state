@@ -50,7 +50,7 @@ const Navbar = () => {
                         <div className="flex items-center gap-3">
                             <img className="h-10 w-10 lg:h-12 lg:w-12" src={healthy} alt="Logo" />
                             <Link to="/" className="text-xl lg:text-3xl font-bold text-blue-950 font-popins">
-                                MED<span className="text-cyan-600">IN</span>
+                                MED<span className="text-cyan-600">In</span>
                             </Link>
                         </div>
                     </div>
