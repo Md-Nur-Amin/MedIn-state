@@ -4,113 +4,85 @@ import 'swiper/css';
 import 'swiper/css/pagination';
 import 'swiper/css/navigation';
 import { Autoplay, Pagination, Navigation } from 'swiper/modules';
-import './Banner.css'
-
-
-// const Banner = () => {
-//     return (
-//         <div>
-//             <div className=" lg:container mx-auto">
-//                 <div className="carousel w-full h-[180px] lg:h-[650px] opacity-90 animate__animated animate__fadeInLeft">
-
-//                     <div id="slide1" className="carousel-item relative w-full">
-
-//                         <div className="relative">
-//                             <h2 className="absolute inset-x-0 text-3xl lg:text-5xl text-center top-12 lg:top-20 text-black font-bold  lg:font-extrabold ">Welcome MEDIN</h2>
-
-//                             <h2 className="absolute inset-x-0 text-center top-20 lg:top-40 text-stone-950 font-medium lg:text-2xl  ">Your Premier Destination for Hospitality Real Estate with MEDIN <br />Where Hospitality Meets Real Estate Excellence!"  </h2>
-
-//                             <img src={hospital_three} className="w-full" />
-//                         </div>
-
-//                         <div className="absolute flex justify-between transform -translate-y-1/2 left-5 right-5 top-1/2">
-//                             <a href="#slide4" className="btn btn-circle ">❮</a>
-//                             <a href="#slide2" className="btn btn-circle ">❯</a>
-//                         </div>
-//                     </div>
-//                     <div id="slide2" className="carousel-item relative w-full">
-//                         <div className="relative">
-//                             <img src={hospital_two} className="w-full" />
-//                             <h2 className="absolute inset-x-0 text-3xl lg:text-5xl text-center top-12 lg:top-20 text-black font-bold  lg:font-extrabold ">Welcome MEDIN</h2>
-
-//                             <h2 className="absolute inset-x-0 text-center top-20 lg:top-40 text-stone-950 font-medium lg:text-2xl  ">Your Premier Destination for Hospitality Real Estate with MEDIN <br />Where Hospitality Meets Real Estate Excellence!  </h2>
-
-//                         </div>
-//                         <div className="absolute flex justify-between transform -translate-y-1/2 left-5 right-5 top-1/2">
-//                             <a href="#slide1" className="btn btn-circle">❮</a>
-//                             <a href="#slide3" className="btn btn-circle">❯</a>
-//                         </div>
-//                     </div>
-//                     <div id="slide3" className="carousel-item relative w-full">
-//                         <div className="relative">
-//                             <img src={hospital_one} className="w-full" />
-//                             <h2 className="absolute inset-x-0 text-3xl lg:text-5xl text-center top-12 lg:top-20 text-black font-bold  lg:font-extrabold ">Welcome MEDIN</h2>
-
-//                             <h2 className="absolute inset-x-0 text-center top-20 lg:top-40 text-stone-950 font-medium lg:text-2xl  ">Your Premier Destination for Hospitality Real Estate with MEDIN <br />Where Hospitality Meets Real Estate Excellence! </h2>
-
-//                         </div>
-//                         <div className="absolute flex justify-between transform -translate-y-1/2 left-5 right-5 top-1/2">
-//                             <a href="#slide2" className="btn btn-circle">❮</a>
-//                             <a href="#slide1" className="btn btn-circle">❯</a>
-//                         </div>
-//                     </div>
-//                 </div>
-//             </div>
-//         </div>
-
-//     );
-// };
-
-
 
 const Banner = () => {
-    return (
-        <div>
+  return (
+    <div className="w-full h-screen relative">
+      <Swiper
+        spaceBetween={30}
+        centeredSlides={true}
+        autoplay={{
+          delay: 4000,
+          disableOnInteraction: false,
+        }}
+        pagination={{
+          clickable: true,
+        }}
+        navigation={true}
+        modules={[Autoplay, Pagination, Navigation]}
+        className="w-full h-full"
+      >
+        {/* Slide 1 */}
+        <SwiperSlide>
+          <div className="relative w-full h-screen">
+            <img
+              src="/src/assets/hospital_one.jpg"
+              alt="Slide 1"
+              className="w-full h-full object-cover"
+            />
+            <div className="absolute inset-0 bg-black/50 flex flex-col items-center justify-center text-white px-4 text-center z-10">
+              <h2 className="text-3xl md:text-5xl lg:text-6xl font-extrabold font-popins animate__animated animate__fadeInDown">
+                Welcome to MEDIN
+              </h2>
+              <p className="mt-4 text-base md:text-xl lg:text-2xl max-w-3xl animate__animated animate__fadeInUp">
+                Your Premier Destination for Hospitality Real Estate with MEDIN.
+                <br />
+                Where Hospitality Meets Real Estate Excellence.
+              </p>
+            </div>
+          </div>
+        </SwiperSlide>
 
-            <Swiper
-                spaceBetween={50}
-                centeredSlides={true}
-                autoplay={{
-                    delay: 1000,
-                    disableOnInteraction: false,
-                }}
-                pagination={{
-                    clickable: true,
-                }}
-                navigation={true}
-                modules={[Autoplay, Pagination, Navigation]}
-                className="mySwiper mt-28"
-            >
+        {/* Slide 2 */}
+        <SwiperSlide>
+          <div className="relative w-full h-screen">
+            <img
+              src="/src/assets/hospital_two.jpg"
+              alt="Slide 2"
+              className="w-full h-full object-cover"
+            />
+            <div className="absolute inset-0 bg-black/50 flex flex-col items-center justify-center text-white px-4 text-center z-10">
+              <h2 className="text-3xl md:text-5xl lg:text-6xl font-extrabold font-popins animate__animated animate__fadeInDown">
+                Discover Exclusive Listings
+              </h2>
+              <p className="mt-4 text-base md:text-xl lg:text-2xl max-w-3xl animate__animated animate__fadeInUp">
+                Tailored Real Estate Solutions for the Hospitality Industry.
+              </p>
+            </div>
+          </div>
+        </SwiperSlide>
 
-
-                <SwiperSlide>
-                    <div className="slide slide1  ">
-
-                        <h2 className="absolute inset-x-0 text-2xl lg:text-5xl text-center top-28 lg:top-32 text-black font-bold  lg:font-extrabold font-popins">Welcome to MEDIN</h2>
-                        <h2 className="absolute inset-x-0 text-center top-1/2 lg:top-48 text-stone-950 font-medium lg:text-2xl font-popins ">Your Premier Destination for Hospitality Real Estate with MEDIN <br />Where Hospitality Meets Real Estate Excellence  </h2>
-                    </div>
-                </SwiperSlide>
-
-                <SwiperSlide>
-                    <div className="slide slide2 ">
-                        <h2 className="absolute inset-x-0 text-2xl lg:text-5xl text-center top-28 lg:top-32 text-black font-bold  lg:font-extrabold font-popins">Welcome to MEDIN</h2>
-                        <h2 className="absolute inset-x-0 text-center top-1/2 lg:top-48 text-stone-950 font-medium lg:text-2xl font-popins">Your Premier Destination for Hospitality Real Estate with MEDIN <br />Where Hospitality Meets Real Estate Excellence  </h2>
-                    </div>
-                </SwiperSlide>
-
-                <SwiperSlide>
-                    <div className="slide slide3">
-                        <h2 className="absolute inset-x-0 text-2xl lg:text-5xl text-center top-28 lg:top-32 text-black font-bold  lg:font-extrabold font-popins">Welcome to MEDIN</h2>
-                        <h2 className="absolute inset-x-0 text-center top-1/2 lg:top-48 text-stone-950 font-medium lg:text-2xl font-popins ">Your Premier Destination for Hospitality Real Estate with MEDIN <br />Where Hospitality Meets Real Estate Excellence  </h2>
-                    </div>
-                </SwiperSlide>
-
-
-            </Swiper>
-        </div >
-    );
+        {/* Slide 3 */}
+        <SwiperSlide>
+          <div className="relative w-full h-screen">
+            <img
+              src="/src/assets/hospital_three.jpg"
+              alt="Slide 3"
+              className="w-full h-full object-cover"
+            />
+            <div className="absolute inset-0 bg-black/50 flex flex-col items-center justify-center text-white px-4 text-center z-10">
+              <h2 className="text-3xl md:text-5xl lg:text-6xl font-extrabold font-popins animate__animated animate__fadeInDown">
+                Invest with Confidence
+              </h2>
+              <p className="mt-4 text-base md:text-xl lg:text-2xl max-w-3xl animate__animated animate__fadeInUp">
+                Partner with MEDIN to Elevate Your Investment Strategy.
+              </p>
+            </div>
+          </div>
+        </SwiperSlide>
+      </Swiper>
+    </div>
+  );
 };
-
-
 
 export default Banner;

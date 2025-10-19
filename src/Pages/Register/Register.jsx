@@ -21,7 +21,6 @@ const Register = () => {
 
     const navigate = useNavigate()
 
-    const { createUser, updateprofile } = useContext(AuthContext);
 
     const [user, setUser] = useState(null);
     const [regError, setRegError] = useState('')
