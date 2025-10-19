@@ -86,13 +86,13 @@ const Register = () => {
         <HelmetProvider>
             <Helmet><title>Register | MEDIN</title></Helmet>
 
-            <div className="min-h-screen flex items-center justify-center bg-base-200 px-4 ">
-                <div className="card w-full max-w-sm shadow-2xl bg-base-100 rounded-tl-3xl rounded-br-3xl p-6 mt-5">
-                    <h2 className="text-2xl font-bold text-center mb-4">Register</h2>
+            <div className="min-h-screen flex items-center justify-center bg-base-200 px-5">
+                <div className="card w-full max-w-xl shadow-2xl bg-base-100 rounded-tl-3xl rounded-br-3xl p-10 my-10">
+                    <h2 className="text-3xl font-bold text-center mb-6">Register</h2>
 
-                    <form onSubmit={handleRegister} className="space-y-4">
+                    <form onSubmit={handleRegister} className="grid grid-cols-1 md:grid-cols-2 gap-6">
 
-                        <div>
+                        <div className="col-span-1 md:col-span-2">
                             <label className="label-text">Your Name</label>
                             <input
                                 type="text"
@@ -125,7 +125,7 @@ const Register = () => {
                             />
                         </div>
 
-                        <div>
+                        <div className="md:col-span-2">
                             <label className="label-text">Password</label>
                             <div className="relative">
                                 <input
@@ -144,14 +144,16 @@ const Register = () => {
                             </div>
                         </div>
 
-                        <button type="submit" className="btn btn-primary w-full">Register</button>
+                        <div className="md:col-span-2">
+                            <button type="submit" className="btn btn-primary w-full">Register</button>
+                        </div>
                     </form>
 
-                    <p className="text-sm mt-3 text-center">
+                    <p className="text-sm mt-4 text-center">
                         Already have an account? <Link to="/login" className="text-blue-600 font-semibold underline">Login</Link>
                     </p>
 
-                    <div className="divider my-4">OR</div>
+                    <div className="divider my-6">OR</div>
 
                     <div className="flex justify-center gap-6 mb-4">
                         <button onClick={handleGoogleSignIn}>
@@ -166,6 +168,7 @@ const Register = () => {
                     {success && <p className="text-green-500 text-sm text-center">{success}</p>}
                 </div>
             </div>
+
         </HelmetProvider>
     );
 };
