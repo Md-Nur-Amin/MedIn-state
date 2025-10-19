@@ -1,16 +1,9 @@
 import { Link } from "react-router-dom";
-import Aos from "aos";
-import 'aos/dist/aos.css';
-import { useEffect } from "react";
 import { IoMdPricetags } from "react-icons/io";
 import { GrStatusWarning } from "react-icons/gr";
 import { CiLocationOn } from "react-icons/ci";
 
 const Card = ({ cards }) => {
-    useEffect(() => {
-        Aos.init({ duration: 2000 });
-    }, []);
-
     const {
         id,
         estate_title,
@@ -28,7 +21,6 @@ const Card = ({ cards }) => {
         <div className="w-full flex justify-center mb-5">
             <div
                 className="bg-white shadow-lg rounded-tl-3xl rounded-br-3xl overflow-hidden w-full max-w-sm transition-transform duration-300 hover:scale-105"
-                data-aos="zoom-in"
             >
                 <figure className="w-full h-56 overflow-hidden">
                     <img
