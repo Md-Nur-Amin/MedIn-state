@@ -9,10 +9,10 @@ import 'aos/dist/aos.css';
 
 const Home = () => {
 
-    
-        useEffect(() => {
-            Aos.init({ duration: 3000 });
-        }, []);
+
+    useEffect(() => {
+        Aos.init({ duration: 3000 });
+    }, []);
 
 
     const cards = useLoaderData();
@@ -22,46 +22,53 @@ const Home = () => {
 
 
     return (
-        <div >
+        <div className="overflow-x-hidden">
             <HelmetProvider>
-            <Helmet><title> Home Page</title></Helmet>
-           
-            <Banner></Banner>
+                <Helmet>
+                    <title>Home Page</title>
+                </Helmet>
 
-            {/* Card section */}
+                <Banner />
 
+                {/* Card section */}
+                <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 my-10 px-4 md:px-6 lg:px-10">
+                    {cards.map((card) => (
+                        <Card key={card.id} cards={card} />
+                    ))}
+                </div>
 
-            <div className="grid grid-cols-1 lg:grid-cols-3 my-10">
-                {
-                    cards.map(card => <Card
-                        key={card.id}
-                        cards={card} >
-                    </Card>)
-                }
-            </div>
-
-            <div>
+                {/* Subscribe Section */}
                 <div data-aos="fade-left">
-                    <div className=" rounded-t-3xl bg-gray-500 dark:bg-gray-500" style={{ backgroundImage: "url('https://source.unsplash.com/random/640x480')", backgroundPosition: "center center", backgroundBlendMode: "multiply", backgroundSize: "cover" }}>
-                        <div className="container flex flex-col flex-wrap content-center justify-center p-4 py-20 mx-auto md:p-10">
-                            <h1 className="text-5xl antialiased font-semibold leading-none text-center text-gray-100 dark:text-gray-800">Get Our Updates</h1>
-                            <p className="pt-2 pb-8 text-xl antialiased text-center text-gray-100 dark:text-gray-800">Find out about events and other news</p>
-                            <div className="flex flex-row">
-                                <input type="text" placeholder="example@email.com" className="w-3/5 p-3 rounded-l-lg sm:w-2/3" />
-                                <button type="button" className="w-2/5 p-3 font-semibold rounded-r-lg sm:w-1/3 bg-violet-600 dark:bg-violet-400 text-gray-50 dark:text-gray-900">Subscribe</button>
+                    <div
+                        className="rounded-t-3xl bg-gray-500"
+                        style={{
+                            backgroundImage: "url('https://source.unsplash.com/random/640x480')",
+                            backgroundPosition: "center",
+                            backgroundBlendMode: "multiply",
+                            backgroundSize: "cover",
+                        }}
+                    >
+                        <div className="container mx-auto flex flex-col items-center justify-center p-4 py-20 md:p-10 text-white">
+                            <h1 className="text-4xl font-semibold text-center">Get Our Updates</h1>
+                            <p className="pt-2 pb-8 text-lg text-center">
+                                Find out about events and other news
+                            </p>
+                            <div className="flex flex-col sm:flex-row w-full max-w-md">
+                                <input
+                                    type="email"
+                                    placeholder="example@email.com"
+                                    className="w-full sm:w-2/3 p-3 rounded-t sm:rounded-l sm:rounded-tr-none text-black"
+                                />
+                                <button className="w-full sm:w-1/3 p-3 bg-violet-600 text-white font-semibold rounded-b sm:rounded-r sm:rounded-bl-none mt-2 sm:mt-0">
+                                    Subscribe
+                                </button>
                             </div>
                         </div>
                     </div>
                 </div>
-
-            </div>
-
-
-
-
-           
             </HelmetProvider>
         </div>
+
     );
 };
 
