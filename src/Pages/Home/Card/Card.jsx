@@ -2,32 +2,75 @@ import { Link } from "react-router-dom";
 import Aos from "aos";
 import 'aos/dist/aos.css';
 import { useEffect } from "react";
+import { IoMdPricetags } from "react-icons/io";
+import { GrStatusWarning } from "react-icons/gr";
+import { CiLocationOn } from "react-icons/ci";
 
 const Card = ({ cards }) => {
-
     useEffect(() => {
         Aos.init({ duration: 2000 });
     }, []);
 
-    const { id, estate_title, segment_name, description, price, status, area, location, facilities, image_url } = cards;
+    const {
+        id,
+        estate_title,
+        segment_name,
+        description,
+        price,
+        status,
+        area,
+        location,
+        facilities,
+        image_url
+    } = cards;
 
     return (
-        <div className="">
-            <div className="card lg:w-96 my-5 font-popins mx-auto bg-base-100 shadow-xl" data-aos="zoom-in">
-                <figure><img src={image_url} alt="Shoes" /> </figure>
-                <div className="card-body">
-                    <h2 className="card-title font-popins"> {estate_title} </h2>
-                    <h2 className=" text-xl font-medium font-popins"> {location} </h2>
-                    <h2 className=" font-popins"> Price: {price} </h2>
-                    <h2 className="text-sm font-popins"> {status} </h2>
+        <div className="w-full flex justify-center mb-5">
+            <div
+                className="bg-white shadow-lg rounded-tl-3xl rounded-br-3xl overflow-hidden w-full max-w-sm transition-transform duration-300 hover:scale-105"
+                data-aos="zoom-in"
+            >
+                <figure className="w-full h-56 overflow-hidden">
+                    <img
+                        src={image_url}
+                        alt={estate_title}
+                        className="w-full h-full object-cover"
+                    />
+                </figure>
 
-                    {
-                        description.length > 50 ? (
-                            <p>{description.slice(0, 50)} <br /> <Link to={`/cards/${id}`} className="mt-5 btn">View Property</Link></p>
-                        ) : (
-                            <p>{description}</p>
-                        )
-                    }
+                <div className="p-5 space-y-3">
+                    <h2 className="text-xl font-bold text-gray-800 font-popins">
+                        {estate_title}
+                    </h2>
+
+                    <p className="flex items-center gap-2 text-gray-600 font-medium text-sm">
+                        <CiLocationOn className="text-green-500 text-lg" />
+                        {location}
+                    </p>
+
+                    <div className="flex justify-between items-center text-sm text-gray-700">
+                        <p className="flex items-center gap-1">
+                            <IoMdPricetags className="text-green-500 text-lg" />
+                            {price}
+                        </p>
+                        <p className="flex items-center gap-1">
+                            <GrStatusWarning className="text-yellow-500 text-lg" />
+                            {status}
+                        </p>
+                    </div>
+
+                    <p className="text-gray-600 text-sm leading-snug">
+                        {description.length > 60
+                            ? `${description.slice(0, 60)}...`
+                            : description}
+                    </p>
+
+                    <Link
+                        to={`/cards/${id}`}
+                        className="inline-block mt-4 bg-indigo-600 hover:bg-indigo-700 text-white text-sm font-semibold py-2 px-4 rounded-tl-xl rounded-br-xl transition duration-300"
+                    >
+                        View Property →
+                    </Link>
                 </div>
             </div>
         </div>

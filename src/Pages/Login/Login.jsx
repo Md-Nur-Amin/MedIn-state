@@ -1,240 +1,152 @@
 import { FcGoogle } from "react-icons/fc";
-import { FaGithub } from "react-icons/fa";
-import { Link, Navigate, useNavigate } from "react-router-dom";
+import { FaGithub, FaEye, FaEyeSlash } from "react-icons/fa";
+import { Link, useNavigate, useLocation } from "react-router-dom";
 import { useContext, useState } from "react";
 import { AuthContext } from "../../Providers/AuthProvider";
 import { GithubAuthProvider, GoogleAuthProvider, getAuth, signInWithPopup } from "firebase/auth";
 import app from "../../Firebase/firebase.config";
-import { FaEyeSlash } from "react-icons/fa";
-import { FaEye } from "react-icons/fa";
-import { HelmetProvider } from "react-helmet-async";
-import { Helmet } from "react-helmet";
+import { Helmet, HelmetProvider } from "react-helmet-async";
 import Swal from 'sweetalert2';
 
 const Login = () => {
-
     const { signIn } = useContext(AuthContext);
-    const navigate = useNavigate()
-
-
-    const [regError, setRegError] = useState('')
+    const navigate = useNavigate();
+    const location = useLocation();
+    const [regError, setRegError] = useState('');
     const [success, setSuccess] = useState('');
     const [showPass, setShowPass] = useState(false);
 
     const handleLogin = e => {
         e.preventDefault();
-        console.log(e.currentTarget);
-        const form = new FormData(e.currentTarget)
-        const email = form.get('email')
-        const password = form.get('password')
-        console.log(email, password)
+        const form = new FormData(e.currentTarget);
+        const email = form.get('email');
+        const password = form.get('password');
+
+        // Basic password validation BEFORE calling Firebase
+        if (password.length < 6) {
+            return Swal.fire({ icon: 'info', title: 'Password must be at least 6 characters' });
+        } else if (!/[A-Z]/.test(password)) {
+            return Swal.fire({ icon: 'info', title: 'Password must contain at least one uppercase letter' });
+        } else if (!/[a-z]/.test(password)) {
+            return Swal.fire({ icon: 'info', title: 'Password must contain at least one lowercase letter' });
+        }
+
         signIn(email, password)
             .then(result => {
-                navigate(location?.state ? location.stale : '/')
-                console.log(result.user);
-                setSuccess('User Login successfully')
-                Swal.fire({
-                    icon: 'success',
-                    title: 'Login successfully'
-                });
+                setSuccess('User logged in successfully');
+                Swal.fire({ icon: 'success', title: 'Login successful' });
+                navigate(location?.state?.from?.pathname || '/');
+            })
+            .catch(error => {
+                setRegError(error.message);
+                Swal.fire({ icon: 'error', title: 'Login failed', text: error.message });
+            });
+    };
+
+    const auth = getAuth(app);
+
+    const handleGoogleSignIn = () => {
+        const provider = new GoogleAuthProvider();
+        signInWithPopup(auth, provider)
+            .then(result => {
+                Swal.fire({ icon: 'success', title: 'Google login successful' });
+                navigate(location?.state?.from?.pathname || '/');
             })
             .catch(error => {
                 console.error(error);
-                setRegError(error.message)
-                Swal.fire({
-                    icon: 'error',
-                    title: 'Account not created, Please Register'
-                });
-                return;
-            })
-
-
-        setRegError('')
-        setSuccess('')
-
-        if (password.length < 6) {
-            Swal.fire({
-                icon: 'info',
-                title: 'Password should be at least 6 characters or longer'
+                Swal.fire({ icon: 'error', title: 'Google login failed' });
             });
-            return;
-        }
-        else if (!/[A-Z]/.test(password)) {
-            Swal.fire({
-                icon: 'info',
-                title: 'Password should have at least one uppercase character'
-            });
-            return;
-        }
-        else if (!/[a-z]/.test(password)) {
-            Swal.fire({
-                icon: 'info',
-                title: 'Password should have at least one lowercase character'
-            });
-            return;
-        }
-        
-        // const name = e.target.name.value;
-        // const url = e.target.url.value;
-        // const email = e.target.email.value;
-        // const password = e.target.password.value;
-        // console.log(name, url, email, password);
-    }
+    };
 
-
-    // Google sign in
-    const auth = getAuth(app);
-    const provider = new GoogleAuthProvider();
-    const handleGoogleSignIn = () => {
-        signInWithPopup(auth, provider)
-            .then(result => {
-                const user = result.user
-                console.log(user);
-                Swal.fire({
-                    icon: 'success',
-                    title: 'Login successfully'
-                });
-                navigate(location?.state ? location.stale : '/')
-            })
-            .catch(error = () => {
-                console.log(error.message);
-                
-            })
-    }
-
-    const gitProvider = new GithubAuthProvider();
     const handleGithubSignIn = () => {
+        const gitProvider = new GithubAuthProvider();
         signInWithPopup(auth, gitProvider)
             .then(result => {
-                const NewUser = result.NewUser;
-                console.log(NewUser);
-                Swal.fire({
-                    icon: 'success',
-                    title: 'Login successfully'
-                });
-                navigate(location?.state ? location.stale : '/')
+                Swal.fire({ icon: 'success', title: 'GitHub login successful' });
+                navigate(location?.state?.from?.pathname || '/');
             })
-            .catch(error = () => {
-                console.log(error.message);
-            })
-    }
-
-
-
-
-
-
-
-
-
-
-
+            .catch(error => {
+                console.error(error);
+                Swal.fire({ icon: 'error', title: 'GitHub login failed' });
+            });
+    };
 
     return (
-        <div>
-            <HelmetProvider>
-            <Helmet><title>About</title></Helmet>
-            
-            <div>
-                <div className="hero  bg-base-200">
-                    <div className="hero-content flex-col lg:flex-row-reverse">
+        <HelmetProvider>
+            <Helmet><title>Login</title></Helmet>
 
-                        <div className="card shrink-0 max-w-sm shadow-2xl bg-base-100 py-6">
+            <div className="min-h-screen bg-base-200 flex items-center justify-center px-4">
+                <div className="card w-full max-w-sm bg-base-100 shadow-xl rounded-tl-3xl rounded-br-3xl py-6 px-4">
+                    <h2 className="text-2xl font-bold text-center mb-4">Login</h2>
 
-
-                            {/* Form section */}
-                            <form onSubmit={handleLogin} className="card-body ">
-
-                                <div className="form-control ">
-                                    <label className="label">
-                                        <span className="label-text">Email</span>
-                                    </label>
-                                    <input type="text" placeholder="Enter Your Name" className="input input-bordered lg:px-24 " required name='name' />
-                                </div>
-
-
-                                <div className="form-control my-4">
-                                    <label className="label">
-                                        <span className="label-text">Picture url</span>
-                                    </label>
-                                    <input type="url" placeholder="Enter picture url" className="input input-bordered" required name='url' />
-                                </div>
-
-                                <div className="form-control">
-                                    <label className="label">
-                                        <span className="label-text">Email</span>
-                                    </label>
-                                    <input type="email" placeholder="email" className="input input-bordered" required name='email' />
-                                </div>
-
-
-
-                                <div className="form-control my-4">
-                                    <label className="label">
-                                        <span className="label-text">Password</span>
-                                    </label>
-
-                                    <div className='flex'>
-                                        <input
-                                            type={showPass ? "text" : "password"}
-                                            placeholder="password"
-                                            className="input input-bordered lg:px-16"
-                                            required name='password'  />
-                                        <span className='mt-5 ml-2' onClick={() => setShowPass(!showPass)} >
-                                            {
-                                                showPass ? <FaEyeSlash /> : <FaEye />
-                                            }
-                                        </span>
-                                    </div>
-
-
-
-                                    <label className="label">
-                                        <a href="#" className="label-text-alt link link-hover">Forgot password?</a>
-                                    </label>
-                                </div>
-
-
-                                <div className="form-control mt-6">
-                                    <button className="btn btn-primary">Login</button>
-                                </div>
-                                <p>Do not have an account go to <Link to='/register' className='font-bold text-blue-500 underline' > Register </Link>  </p>
-
-
-                                {/* Google and github authentication */}
-                                <hr  />
-                            </form>
-
-                            <div className='text-center'>
-                                <h2 className="text-xl mb-4">Login With</h2>
-                                <div className=' flex justify-center'>
-                                    <button onClick={handleGoogleSignIn} className="  mr-5"> <FcGoogle className='h-[30px] w-[30px] ' /> </button>
-
-                                    <button onClick={handleGithubSignIn} className=""> <FaGithub className='h-[30px] w-[30px]' /> </button>
-                                </div>
-
-
-
-
-                                {
-                                    regError && <p className='text-red-600 ' > {regError} </p>
-                                }
-
-                                {
-                                    success && <p className='text-green-600 ' > {success} </p>
-                                }
-                            </div>
-
-
+                    {/* Login Form */}
+                    <form onSubmit={handleLogin} className="space-y-4">
+                        <div>
+                            <label className="label">
+                                <span className="label-text">Email</span>
+                            </label>
+                            <input
+                                type="email"
+                                name="email"
+                                className="input input-bordered w-full"
+                                required
+                                placeholder="Enter your email"
+                            />
                         </div>
+
+                        <div>
+                            <label className="label">
+                                <span className="label-text">Password</span>
+                            </label>
+                            <div className="relative">
+                                <input
+                                    type={showPass ? "text" : "password"}
+                                    name="password"
+                                    className="input input-bordered w-full pr-10"
+                                    required
+                                    placeholder="Enter your password"
+                                />
+                                <span
+                                    onClick={() => setShowPass(!showPass)}
+                                    className="absolute right-3 top-3 cursor-pointer text-lg"
+                                >
+                                    {showPass ? <FaEyeSlash /> : <FaEye />}
+                                </span>
+                            </div>
+                        </div>
+
+                        <div className="text-right">
+                            <a className="text-sm text-blue-500 hover:underline" href="#">Forgot password?</a>
+                        </div>
+
+                        <button type="submit" className="btn btn-primary w-full">Login</button>
+                    </form>
+
+                    <p className="text-center text-sm mt-3">
+                        Don't have an account? <Link to="/register" className="text-blue-600 font-semibold underline">Register</Link>
+                    </p>
+
+                    {/* Divider */}
+                    <div className="divider my-4">OR</div>
+
+                    {/* Social Logins */}
+                    <div className="flex justify-center gap-6">
+                        <button onClick={handleGoogleSignIn}>
+                            <FcGoogle className="text-3xl" />
+                        </button>
+                        <button onClick={handleGithubSignIn}>
+                            <FaGithub className="text-3xl" />
+                        </button>
+                    </div>
+
+                    {/* Error/Success Messages */}
+                    <div className="mt-4 text-center">
+                        {regError && <p className="text-red-500 text-sm">{regError}</p>}
+                        {success && <p className="text-green-500 text-sm">{success}</p>}
                     </div>
                 </div>
-
             </div>
-
-
-            </HelmetProvider>
-        </div>
+        </HelmetProvider>
     );
 };
 
