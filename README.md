@@ -1,32 +1,81 @@
-# React + Vite
+# MEDIN - Real Estate Application
 
-### Whebsite Name: MEDIN
-# Firbase Live Link: https://medin-real-estate.web.app/
+[Live Demo](https://medin-real-estate.web.app/)
 
+## Overview
 
-## 1. Home Page: The home page contain data of hospital information with navbar banner and other info
-## 2. Navbar: The navbar has two part , one in the middle to go to another pages and at the nav end there a circle button consist of some sub button/sub list. The navbar has been applied to every route. If user is registered or logged in user can see two extra options and also hovering the circle button user can see their using name. 
+MEDIN is a React-based real estate application designed to showcase hospital-related property information. The platform offers a variety of user features, including registration, profile management, and viewing property details. Users can register with Google, GitHub, or email/password to access private routes and manage their profiles.
 
-# 3. At the sublist you will find login/logout and private route section. The private route works only when a user is registered.
+### Features:
 
-# 4. In the home page there are cards , to see the full details information of those card user need to press the view property button but to see more information about the specific card user need to register.
+1. **Home Page**: Displays a list of hospital-related property information along with a navigation bar, banner, and other relevant details.
 
-# 5. Applied an about more route ( static ).
+2. **Navbar**: 
+   - The navbar consists of two sections:
+     - A middle section for easy navigation to other pages.
+     - A circle button at the end that shows additional options. When hovered, the button displays the logged-in user's name.
+   - If the user is logged in, two extra options appear in the navbar.
 
-# 6. Contact us route ( 404 - page not found )
+3. **Private Routes**:
+   - **Login/Logout**: The user can log in or log out.
+   - **Private Route Section**: Accessible only to registered users.
+   - The private route features are available once the user is logged in.
 
-# 7. Register route/page to register -> User can register with google or github or email password. To register with email and password user need to fill name and photo url input field
+4. **Property Cards**: 
+   - The home page features cards representing properties. To view full details, users need to click on the "View Property" button.
+   - To access more detailed property information, users must be registered.
 
-# 8. After register user can see two private route, those are: -> a. profile and update progile route
+5. **About Page**: 
+   - A static route providing more information about the platform.
 
-# 9. Profile route: User can see their personal details on the profile route.
+6. **Contact Us Page**: 
+   - This page currently returns a 404 error (Page Not Found).
 
-# 10. User can update their name, photo and email through update profile route.
+7. **Register Page**: 
+   - Users can register using Google, GitHub, or email/password. 
+   - For email/password registration, users must fill in their name and photo URL.
 
+8. **Profile Route**: 
+   - After registration, users can view their personal details in their profile.
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+9. **Update Profile Route**: 
+   - Users can update their name, photo, and email on the update profile page.
 
-Currently, two official plugins are available:
+---
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Technologies Used:
+
+- **React**: Frontend framework for building the UI.
+- **Vite**: Build tool for faster development and HMR (Hot Module Replacement).
+- **Firebase**: For user authentication and data management.
+- **ESLint**: For maintaining consistent code quality.
+
+---
+
+## Setup Instructions:
+
+To run the project locally, follow these steps:
+
+### Prerequisites:
+- Node.js (version 14 or higher)
+- npm or yarn
+
+### Installation:
+
+1. Clone the repository:
+   ```bash
+   git clone https://github.com/your-username/medin.git
+   cd medin
+Install dependencies:
+
+bash
+Copy code
+npm install
+Start the development server:
+
+bash
+Copy code
+npm run dev
+Open the app in your browser:
+
+http://localhost:3000
